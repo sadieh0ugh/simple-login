@@ -5,7 +5,7 @@ def Login():
     usernameI = input("Enter Username: \n")
     passwordI = input("Enter Password: \n")
 
-    correct = False
+    match = False
     for user in userArray:
         if usernameI == user[0] and passwordI == user[1]:
             match = True
@@ -15,15 +15,13 @@ def Login():
         print("Access granted.")
     else:
         print("Access denied.")
+        menu()
 
 def Signup():
     global userArray
     newUser = input("Enter NEW Username: \n")
 
     user_exists = False
-    #print("Help Me")
-    #print("Lol nah")
-    #print("K")
     for user in userArray:
         if user[0] == newUser:
             user_exists = True
@@ -35,20 +33,19 @@ def Signup():
         print("New User Added.")
         menu()
     else:
+        user_exists = True
         print("Error the username already exists.")
-        signup()
-
-def menu():
-    selectMenu = int(input("Select: \n 1. Login \n 2. Signup \n")
-
-    if selectMenu == "1":
-        Login()
-
-    elif selectMenu == "2":
         Signup()
 
+def menu():
+    menuSelect = input("Select menu option:\n\
+1. Login\n\
+2. Signup\n")
+    if menuSelect == "1":
+        Login()
+    if menuSelect == "2":
+        Signup()
     else:
-        print("Invalid input.")
         menu()
 
 menu()
